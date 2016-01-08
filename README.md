@@ -19,6 +19,7 @@ Beachte:
 * Automatenverkettung (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L126)
 * Pumping lemma Beispiel (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L422)
 * Äquivalenzklassen durch Nerode relation (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L200)
+* Reguläre Sprache Check (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L442)
 
 Fragen:
 
