@@ -42,7 +42,7 @@ D5.M[(0,1)] = D5.M
 D5.K = True
 
 D6 = DFA_Machine('N')
-D6.N[0] = D6.0
+D6.N[0] = D6.O
 D6.N[1] = D6.P
 D6.O[0] = D6.P
 D6.O[1] = D6.N
