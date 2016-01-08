@@ -11,3 +11,11 @@ Installation graphenbibliothek:
 * Graphen zu pdf: `python script.py | dot -Tpdf > foo.pdf`
 
 * Beispiele im Ordner 1
+
+
+Beachte:
+
+* kreuzprodukt von Automaten (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L174)
+* Automatenverkettung (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L126)
+* Pumping lemma Beispiel (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L422)
+* Äquivalenzklassen durch Nerode relation (https://github.com/maweki/ssfsm/blob/nfa/ssfsm/dfa.py#L200)
