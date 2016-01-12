@@ -42,10 +42,11 @@ class CFG(object):
     def __repr__(self):
         return repr(((self.__start), self.__rules))
 
-    def produce_word(self, symbol):
+    def produce_word(self, symbol=None):
         return next(iter(self.produce_words(symbol)))
 
-    def produce_words(self, symbol):
+    def produce_words(self, symbol=None):
+        symbol = symbol or self.__start
         from collections import deque
         assert(symbol in self.__nonterminals)
         queue = deque([(symbol,)])
