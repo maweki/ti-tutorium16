@@ -17,3 +17,9 @@ g = CFG(Z, [
 g_ = g.chomsky_normal_form()
 print(g_.accepts('baabbbaaabba'))
 print(g_.accepts('baabbaaabba'))
+
+pl = g.get_pumping_lemma()
+print(pl)
+u,v,w,x,y = pl
+for i in range(20):
+    print("%s%s%s%s%s" % (u, v*i, w, x*i, y))

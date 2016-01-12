@@ -29,7 +29,7 @@ class CFG(object):
         return CFG(start, rules)
 
     def __add__(self, other):
-        assert(not (self.__nonterminals & other.__nonterminals)) # Grammars should not share Nonterminals
+        assert(self is other or not (self.__nonterminals & other.__nonterminals)) # Grammars should not share Nonterminals
         start = NT()
         rules = self.__rules | other.__rules | set([(start, (self.__start, other.__start))])
         return CFG(start, rules)
@@ -41,6 +41,54 @@ class CFG(object):
 
     def __repr__(self):
         return repr(((self.__start), self.__rules))
+
+    def produce_word(self, symbol):
+        return next(iter(self.produce_words(symbol)))
+
+    def produce_words(self, symbol):
+        from collections import deque
+        assert(symbol in self.__nonterminals)
+        queue = deque([(symbol,)])
+        while queue:
+            w = queue.popleft()
+            if all(type(s) is T for s in w):
+                yield tuple(s.symbol for s in w)
+                continue
+            idx, nt = next(iter((pos, s) for pos, s in enumerate(w) if type(s) is NT))
+            for l, r in self.__rules:
+                if l == nt:
+                    queue.append(w[:idx] + tuple(r) + w[idx+1:])
+
+
+    def get_reachable(self, symbol):
+        def get_reachable_rec(symbol, seen):
+            if symbol in seen:
+                return set()
+            else:
+                result = set()
+                for l, r in self.__rules:
+                    if l == symbol:
+                        for s in r:
+                            if type(s) is NT:
+                                result.add(s)
+                                result |= get_reachable_rec(s, seen | set([symbol]))
+                return result
+        return get_reachable_rec(symbol, set())
+
+    def get_pumping_lemma(self):
+        def is_proper_subsequence(smaller, larger):
+            for d in range(len(larger) - len(smaller)):
+                if larger[d:len(smaller) + d] == smaller:
+                    return True
+            return False
+
+        looping_state = next(iter(s for s in self.__nonterminals if s in self.get_reachable(s)))
+        w = self.produce_word(looping_state)
+        vwx = next(iter(vwx for vwx in self.produce_words(looping_state) if is_proper_subsequence(w, vwx)))
+        v_, w_, x_ = ''.join(vwx).partition(''.join(w))
+        uvwxy = next(iter(uvwxy for uvwxy in self.produce_words(self.__start) if is_proper_subsequence(vwx, uvwxy)))
+        u_, vwx_, y_ = ''.join(uvwxy).partition(''.join(vwx))
+        return (u_, v_, w_, x_, y_)
 
     def chomsky_normal_form(self):
         # Rules are either NT -> (NT, NT)
