@@ -110,9 +110,9 @@ class CFG(object):
     def chomsky_normal_form(self):
         # Rules are either NT -> (NT, NT)
         # or NT -> (T,)
-        t_repl = {t.symbol: NT() for t in self.terminals}
+        t_repl = {t: NT() for t in self.terminals}
         old_rules = set(self.rules)
-        new_rules = set((nt,(T(ts),)) for ts, nt in t_repl.items())
+        new_rules = set((nt,(t,)) for t, nt in t_repl.items()) # All Nt -> (T,) rules
 
         types = lambda i: tuple(map(type, i))
 
@@ -132,7 +132,7 @@ class CFG(object):
                 continue
             if any(type(e) is T for e in r):
                 # Replace any T with the corresponding NT
-                rn = tuple((t_repl[e.symbol] if type(e) is T else e) for e in r)
+                rn = tuple((t_repl[e] if type(e) is T else e) for e in r)
                 old_rules.add((l, rn))
                 continue
             if len(r) > 2:
