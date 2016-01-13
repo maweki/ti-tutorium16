@@ -1,4 +1,8 @@
+from __future__ import print_function
 from cfg import T, NT, CFG
+from itertools import islice
+
+words = (lambda g, cnt=20: tuple(map(lambda w: print(''.join(w)),islice(g.produce_words(),cnt))))
 
 # examples from https://en.wikipedia.org/wiki/Context-free_grammar#Examples
 
@@ -11,6 +15,7 @@ wfp = CFG(S,[
     (S, (o, S, c)),
     (S, (o, c))
 ])
+words(wfp)
 
 # Well-formed nested parentheses and square brackets
 O = T('[')
@@ -22,6 +27,7 @@ wfnpasb = CFG(S,[
     (S, (O, C)),
     (S, (O, S, C)),
 ])
+words(wfnpasb)
 
 # A regular grammar
 a = T('a')
@@ -31,12 +37,14 @@ arg = CFG(S,[
     (S, (a, S)),
     (S, (b, S)),
 ])
+words(arg)
 
 # Matching pairs
 mp = CFG(S,[
     (S, (a, S, b)),
     (S, (a, b)),
 ])
+words(mp)
 
 # Algebraic expressions
 x, y, z = T('x'), T('y'), T('z')
@@ -51,6 +59,7 @@ ae = CFG(S, [
     (S, (S, div, S)),
     (S, (o, S, c)),
 ])
+words(ae,40)
 
 # Further examples
 U, V, T = NT(), NT(), NT()
@@ -72,11 +81,13 @@ fe1 = CFG(S, [
     (T, (a, b)),
     (T, (b, a)),
 ])
+words(fe1)
 
 A = NT()
 fe2 = CFG(S, [
     (S, (b, S, b, b)),
     (S, (A,)),
     (A, (a, A)),
-    (A, (a))
+    (A, (a,))
 ])
+words(fe2)

@@ -33,8 +33,10 @@ class CFG(object):
         self.__rules = set(rules)
         self.__start = start
         assert(isinstance(start, NT))
-        for nt in self.nonterminals:
-            assert(isinstance(nt, NT))
+        for l, r in self.rules:
+            assert(isinstance(l, NT))
+            for r_ in r:
+                assert(isinstance(r_, NT) or isinstance(r_, T))
 
     def __or__(self, other):
         # Old rules and A -> A', A -> A''
