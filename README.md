@@ -10,7 +10,7 @@ Installation graphenbibliothek:
 
 * im Projektordner `pip install --user .`
 
-* Graphen zu pdf: `python script.py | dot -Tpdf > foo.pdf`
+* Graphen zu pdf: `python3 script.py | dot -Tpdf > foo.pdf`
 
 * Beispiele im Ordner 1
 
