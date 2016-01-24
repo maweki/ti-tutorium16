@@ -52,6 +52,41 @@ Fragestellungen:
 * Abschluss unter ...? -> Ja (Konstruktion)
 * Gegebene Kontextfreie Sprachen, Schnitt auch Kontextfrei? -> Nein (PL)
 
+
+## P/NP
+
+Reduktionsideen:
+
+Überlege Korrektheit (es kommen keine falschen Lösungen dazu), Vollständigkeit (es kommen keine korrekten Lösungen weg), <- Zusammen Erfüllbarkeitsäquivalent, Komplexität/Kosten
+
+* SAT->3SAT
+  * kurze Klauseln mit doppelten Literalen auffüllen
+  * lange klauseln verketten (ähnlich Chomsky-Normalform) ABCD -> (AB1, ~1CD)
+* DHC->HC
+  * Jeder Knoten zu 3 Knoten (Eingang, Ausgang, Mitte)
+  * Mitte kann nur Über Eingang -> Mitte -> Ausgang oder Ausgang -> Mitte -> Eingang erreicht werden
+  * Nur Ausgänge mit Eingängen verbinden, damit immer Eingang -> Mitte -> Ausgang -> Eingang -> Mitte -> Ausgang usw...
+* 3SAT->IS
+  * Gesucht IS größe n für n Klauseln
+  * Für jedes Literal in jeder Klausel einen Knoten
+  * Nur ein erfüllendes Literal in jeder Klausel -> Alle Literale einer Klausel verbinden
+  * Keine widersprüchlichen Literate in Lösung -> Alle Literale mit ihren Negationen verbinden
+* HC->TSP
+  * Alle Strecken bekommen kosten 1
+  * Rundreise länge n gesucht für n Knoten (wenn ja, dann HC)
+* SAT3->DHC
+  * Ein knoten für jede Variable
+  * 6-Knoten "Gadget" für jede 3-Klausel kann vollständig erfüllt (besucht) werden durch 1, 2 oder 3 eingehende erfüll-Kante
+  * Yeah/Ney-Kante aus Variable in erfüllendes Literal aus Klausel 1, dann Klausel 2 usw., dann Eingang nächste Variable
+
+Fragestellungen:
+
+* Was bedeutet Problem in P/NP?
+* p1 <=p p2. Wie ist Klassenzugehörigkeit von p1, p2? Welcher Zusammenhang besteht?
+* Zeige Reduktion (SAT->SAT3/DHC->HC/3SAT->Clique/3SAT->IS/HC->TSP/SAT3->DHC), begründe Korrektheit, gehe auf Kosten/Zeit/Komplexität der Reduktion ein
+* Erkläre "NP-Vollständig"/"NP-Schwer"/"NP"/"P" mit (det/ndet) Turing-Maschinen als Algorithmenmodell
+
+
 Fragen:
 
 * maweki bei gmail
