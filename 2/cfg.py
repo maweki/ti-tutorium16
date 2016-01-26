@@ -8,7 +8,7 @@ class NT(object):
     __ntnames = {}
     def __repr__(self):
         if not self in self.__ntnames:
-            self.__ntnames[self] = ascii_uppercase[len(self.__ntnames)]
+            self.__ntnames[self] = ascii_uppercase[len(self.__ntnames) % len(ascii_uppercase)] + '\''*(len(self.__ntnames) // len(ascii_uppercase))
         return self.__ntnames[self]
 
 class CFG(object):
