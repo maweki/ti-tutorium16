@@ -86,6 +86,29 @@ Fragestellungen:
 * Zeige Reduktion (SAT->SAT3/DHC->HC/3SAT->Clique/3SAT->IS/HC->TSP/SAT3->DHC), begründe Korrektheit, gehe auf Kosten/Zeit/Komplexität der Reduktion ein
 * Erkläre "NP-Vollständig"/"NP-Schwer"/"NP"/"P" mit (det/ndet) Turing-Maschinen als Algorithmenmodell
 
+# Entscheidbarkeit
+
+* Entscheidbar/Rekursiv
+  * akzeptiert immer in endl. Zeit
+  * lehnt immer in endl. Zeit ab
+  * abgeschlossen unter Komplement
+* Semi-Entscheidbar/(Rekursiv) Aufzählbar
+  * akzeptiert immer in endl. Zeit
+  * hält bei Ablehnung nicht immer
+  * Komplement unentscheidbar (wenn Komplement auch Semi-Entscheidbar, dann beide in Wirklichkeit entscheidbar)
+* Unentscheidbar
+  * hält bei akzeptierten Wörtern nicht immer
+* Diagonalsprache
+  * Universelle Turing-Maschine M existiert und wird mit Zeichenkette w als M_w kodiert
+  * D = {w | M_w akzeptiert w nicht} (mit w kodierte Turing-Maschine bekommt w als Eingabe und akzpetiert w nicht)
+
+Fragestellungen:
+
+* L oder ~L unentscheidbar. L oder ~L Semi-Entscheidbar?
+* Ist Diagonalsprache Semi-Entscheidbar?
+* Reduktion P1 < P2: Verhalten (Semi/Un)entscheidbarkeit
+
+Viel Erfolg!
 
 Fragen:
 
