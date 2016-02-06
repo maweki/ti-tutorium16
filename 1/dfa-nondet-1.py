@@ -1,6 +1,6 @@
 from ssfsm import NFA_Machine
 
-# Akzeptiert nur gerade Binärzahlen
+#  {01}*1{01}^n für n = 2
 
 A = NFA_Machine('a')
 A.a[0] += A.a
