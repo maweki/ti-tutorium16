@@ -110,7 +110,4 @@ Fragestellungen:
 
 Viel Erfolg!
 
-Fragen:
-
-* maweki bei gmail
-* mwenzel bei imn
+Fragen (2017er Jhrg.): Issue aufmachen und ich versuche zu helfen.
