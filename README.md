@@ -31,6 +31,8 @@ Mögliche Fragestellungen:
 * Defn. Nerode-Relation
 * Zu jedem NFA gehört DFA. -> Konstruktion
 
+**Hinweis zum PL (gilt auch für CFG):** Jede Reguläre/Kontextfreie Sprache erfüllt ihr Pumping Lemma. Es gibt auch komplexere Sprachen, die das PL erfüllen. Erfüllt eine Sprache nicht das PL, gehört sie nicht der Familie an. Es gilt also: (CFG -> CFG-PL), sowie (Reg -> Reg-PL), und die Inversion (~Reg-PL -> ~Reg) und (~CFG-PL -> ~CFG). **ES GELTEN NICHT: (CFG-PL -> CFG), (Reg-PL -> Reg), (~Reg -> ~Reg-PL), (~CFG -> ~CFG-PL)!!!!!!!!!!!!!!!!!!!!**
+
 ## Kontextfreie Sprachen
 
 Benutzung siehe Beispiele
